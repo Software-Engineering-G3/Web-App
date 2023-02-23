@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	  <link rel="stylesheet" href="Style.css">
-	  <meta charset="UTF-8">
-	</head>
-	<body>
-		<h1 class="Title">Smart Home Dashboard</h1>
-		
-		<!-- Card with labels-->
-		<div class="card-wrap">
-		  <div class="card-header one">
-		  <img class="card-img-top" src="images/light.png" alt="Card image cap" height="140px" width="140px">
+
+<head>
+	<title>Smart House</title>
+	<meta name="description" content="Control your smart house!">
+	<meta name="keywords" content="smart house control">
+	<link rel="stylesheet" href="Style.css">
+	<meta charset="UTF-8">
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js'></script>
+	<script src="script.js"></script>
+</head>
+
+<body>
+	<h1 class="Title">Smart Home Dashboard</h1>
+	<!-- Card with labels-->
+	<div class="card-wrap">
+		<div class="card-header one">
+			<img class="card-img-top" src="images/light.png" alt="Card image cap" height="140px" width="140px">
 			<i class="fas fa-code"></i>
-		  </div>
-		  <div class="card-content">
+		</div>
+		<div class="card-content">
 			<h1 class="card-title">Light</h1>
 			<p class="card-text">The light is switch on </p>
 			<!-- Rounded switch -->
 			<label class="switch">
-			  <input type="checkbox">
-			  <span class="slider round"></span>
+				<input type="checkbox" id="light-checkbox" onchange="toggleLight()">
+				<span class="slider round"></span>
 			</label>
-		 </div>
 		</div>
-		<div class="card-wrap">
-		  <div class="card-header two">
+	</div>
+	<div class="card-wrap">
+		<div class="card-header two">
 			<img class="card-img-top" src="images/door.png" alt="Card image cap" height="150px" width="150px">
 			<i class="fab fa-css3-alt"></i>
-		  </div>
-		  <div class="card-content">
+		</div>
+		<div class="card-content">
 			<h1 class="card-title">Door</h1>
 			<p class="card-text">The door is closed</p>
 			<!-- Rounded switch -->
 			<label class="switch">
-			  <input type="checkbox">
-			  <span class="slider round"></span>
+				<input type="checkbox" id="door-checkbox">
+				<span class="slider round"></span>
 			</label>
-		 </div>
 		</div>
-		<div class="card-wrap">
-		  <div class="card-header three">
-		  	<img class="card-img-top" src="images/window.png" alt="Card image cap" height="120px" width="120px">
+	</div>
+	<div class="card-wrap">
+		<div class="card-header three">
+			<img class="card-img-top" src="images/window.png" alt="Card image cap" height="120px" width="120px">
 			<i class="fab fa-html5"></i>
-		  </div>
-		  <div class="card-content">
+		</div>
+		<div class="card-content">
 			<h1 class="card-title">Window</h1>
 			<p class="card-text">The window is open</p>
 			<!-- Rounded switch -->
 			<label class="switch">
-			  <input type="checkbox">
-			  <span class="slider round"></span>
+				<input type="checkbox" id="window-checkbox">
+				<span class="slider round"></span>
 			</label>
-		 </div>
 		</div>
-	</body>
+	</div>
+</body>
+
 </html>
