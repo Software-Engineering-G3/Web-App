@@ -46,7 +46,7 @@ body{
   transform: scale(1.1);
 }
 .card-header{
-  height: 200px;
+  height: 175px;
   width: 100%;
   background: red;
   border-radius:100% 0% 100% 0% / 0% 50% 50% 100%;
@@ -184,4 +184,10 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+
+.tempFont{
+	font-size:50px;
+	color:green;
 }
