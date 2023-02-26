@@ -1,12 +1,12 @@
 var socket = io.connect("http://localhost:1234");
 
-function toggleLight() {
-    if (document.getElementById("light-checkbox").checked === true) {
-        socket.emit("light-on");
-        console.log("Light On");
+function toggleAlarm() {
+    if (document.getElementById("alarm-checkbox").checked === true) {
+        socket.emit("alarm-on");
+        console.log("Alarm On");
     } else {
-        socket.emit("light-off");
-        console.log("Light Off");
+        socket.emit("alarm-off");
+        console.log("Alarm Off");
     }
 }
 
