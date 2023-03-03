@@ -1,4 +1,37 @@
-var socket = io.connect("http://localhost:1234");
+let socket;
+let connect = false;
+let url = "192.168.8.185";
+let port = "4121";
+
+function toggleConnection() {
+    connect = !connect;
+    console.log(connect);
+    if (connect === true) {
+        document.getElementById("connection-status").innerHTML = "Connecting...";
+        document.getElementById("connect-button").innerHTML = "Cancel";
+        socket = io.connect("http://" + url + ":" + port);
+        registerSocketEvents();
+    } else {
+        socket.disconnect();
+        document.getElementById("connection-status").innerHTML = "Disconnected";
+        document.getElementById("connect-button").innerHTML = "Connect";
+    }
+}
+
+function registerSocketEvents() {
+    socket.on('connect', function () {
+        document.getElementById("connection-status").innerHTML = "Connected";
+        document.getElementById("connect-button").innerHTML = "Disconnect";
+        console.log("Connected");
+    });
+
+    socket.on('disconnect', function () {
+        document.getElementById("connection-status").innerHTML = "Connecting...";
+        document.getElementById("connect-button").innerHTML = "Cancel";
+        console.log("Disconnected");
+    });
+
+}
 
 function toggleAlarm() {
     if (document.getElementById("alarm-checkbox").checked === true) {
@@ -10,16 +43,22 @@ function toggleAlarm() {
     }
 }
 
+function toggleLight() {
+    if (document.getElementById("light-checkbox").checked === true) {
+        socket.emit("won");
+        console.log("Light On");
+    } else {
+        socket.emit("woff");
+        console.log("Light Off");
+    }
+}
+
 function play() {
     socket.emit("play");
-    console.log("Play");
+    console.log("Play music");
 }
 
 function pause() {
     socket.emit("pause");
-    console.log("Pause");
+    console.log("Pause music");
 }
-
-socket.on('connect', function () {
-    console.log("Connected");
-});
