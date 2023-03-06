@@ -49,4 +49,4 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: "."
           strip_components: 0
-          target: "~/Documents/Database"
+          target: "~/Documents/Website"
