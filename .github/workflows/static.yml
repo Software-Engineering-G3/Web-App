@@ -49,4 +49,4 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: "."
           strip_components: 0
-          target: "~/Documents/Website"
+          target: "/var/www/smart-house"
