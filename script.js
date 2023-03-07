@@ -53,6 +53,16 @@ function toggleLight() {
     }
 }
 
+function toggleFan() {
+    if (document.getElementById("fan-checkbox").checked === true) {
+        socket.emit("fa200");
+        console.log("Fan On");
+    } else {
+        socket.emit("fs");
+        console.log("Fan Off");
+    }
+}
+
 function play() {
     socket.emit("play");
     console.log("Play music");
