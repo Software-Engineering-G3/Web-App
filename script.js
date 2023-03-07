@@ -9,7 +9,11 @@ function toggleConnection() {
     if (connect === true) {
         document.getElementById("connection-status").innerHTML = "Connecting...";
         document.getElementById("connect-button").innerHTML = "Cancel";
-        socket = io.connect("http://" + url + ":" + port);
+        socket = io.connect("http://" + url + ":" + port, {
+            extraheaders: {
+                "Access-Control-Request-Private-Network": "true"
+            }
+        });
         registerSocketEvents();
     } else {
         socket.disconnect();
