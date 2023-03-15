@@ -54,7 +54,7 @@ a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
   
   
-a:hover { text-decoration: none; }
+a:hover { text-decoration: none; cursor: pointer;}
   
   
 a:active { text-decoration: none; }
@@ -94,13 +94,28 @@ main{
 	rgba(255,255,255,0.3));
 	border-radius:2rem;
 }
-.objet{
+.object{
   flex:2;
   margin: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
+
 }
+#sensors{
+	display:block;
+}
+#actuators{
+	display:none;
+}
+#musicPlayer{
+	display:none;
+}
+#settings{
+	display:none;
+}
+
 .objetMusic{
 	flex:2;
 	margin: 5rem;

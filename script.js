@@ -76,3 +76,48 @@ function pause() {
     socket.emit("pause");
     console.log("Pause music");
 }
+
+
+// DIV game of shadows
+let btnActuators=document.getElementById('btnActuators');
+let btnMusic=document.getElementById('btnMusic');
+let btnSettings=document.getElementById('btnSettings');
+let btnSensors=document.getElementById('btnSensors');
+
+let divActuators=document.getElementById('actuators');
+let divSensors=document.getElementById('sensors');
+let divMusic=document.getElementById('musicPlayer');
+let divSettings=document.getElementById('settings');
+
+btnSensors.addEventListener('click',() =>{
+    divSensors.style.display = 'block';
+    divMusic.style.display = 'none';
+    divSettings.style.display = 'none';
+    divActuators.style.display = 'none';
+    
+})
+
+btnActuators.addEventListener('click',() =>{
+    divSensors.style.display = 'none';
+    divMusic.style.display = 'none';
+    divSettings.style.display = 'none';
+    divActuators.style.display = 'block';
+    
+})
+
+btnMusic.addEventListener('click',() =>{
+    divSensors.style.display = 'none';
+    divActuators.style.display = 'none';
+    divSettings.style.display = 'none';
+    divMusic.style.display = 'block';
+    
+})
+
+btnSettings.addEventListener('click',() =>{
+    divSensors.style.display = 'none';
+    divActuators.style.display = 'none';
+    divMusic.style.display = 'none';
+    divSettings.style.display = 'block';
+    
+})
+
