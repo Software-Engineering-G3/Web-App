@@ -181,13 +181,27 @@
 			</div>	
 			<div class="actionCard">
 					<!-- Card with labels-->
-					<div class="card-wrap animate glow delay-4">
-						<div class="card-header two">
-							<img class="card-img-top" src="images/light.png" alt="Card image lights" height="140px" width="140px">
-						</div>
-						<div class="card-content">
-							<h1 class="card-title">Lights</h1>
-							<p class="tempFont">--></p>
+					<div  class="flip-card-container animate glow delay-4">
+						<div class="flip-card">
+							<div class="flip-card-front">
+								<div class="card-header two">
+									<img class="card-img-top" src="images/light.png" alt="Card image lights" height="140px" width="140px">
+								</div>
+								<div class="card-content">
+									<h1 class="card-title">Lights</h1>
+									<p class="tempFont">Click to Flip</p>
+								</div>
+							</div>
+							<div class="flip-card-back">
+								<h1 class="card-title">Indoor Lamp :</h1>
+								<input type="range" min="1" max="255" value="10" class="range" id="myRange" >
+								<h1 class="card-title">Outdoor Lamp :</h1>
+								<label class="switch">
+								<input type="checkbox" id="Outdoor-Lamp">
+								<span class="slider round"></span>
+								</label>
+								
+							</div>
 						</div>
 					</div>
 					<!-- Card with labels-->

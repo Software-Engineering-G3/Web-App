@@ -121,3 +121,11 @@ btnSettings.addEventListener('click',() =>{
     
 })
 
+//flipping card 
+
+const card = document.querySelector(".flip-card");
+
+card.addEventListener("click", function (e) {
+  card.classList.toggle('is-flipped');
+});
+
