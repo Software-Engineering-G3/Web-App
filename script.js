@@ -129,3 +129,16 @@ card.addEventListener("click", function (e) {
   card.classList.toggle('is-flipped');
 });
 
+
+// get settings input from form
+let form = document.forms["settingsForm"];
+form.addEventListener("submit", getValues);
+
+function getValues(event){
+
+   event.preventDefault();
+   let url = this.url.value
+   let portNumber = this.portNumber.value
+}
+
+
