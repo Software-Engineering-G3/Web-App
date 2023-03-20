@@ -23,6 +23,21 @@ h3 {
   font-weight: 600;
   opacity: 0.8;
 }
+
+label {
+  color: #658ec6;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.formInputButton {
+  background-color: #04AA6D;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
 /* Card design*/
 :root{
 	--color-text: #616161;

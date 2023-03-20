@@ -263,17 +263,30 @@
 
 		<!-- Settings-->
 		<div class="objet" id="settings">
-			<div class="status">
-				<h1>Settings</h1>
-                <h2>Change your Web configuration</h2>	
+			<div class="status" style="text-align: center; padding-top:100px;">
+
+				<h1>Settings</h1><br>
+                <h2>Change your Web configuration</h2><br><br>
+
+				<p><b>Url: </b><span id="url"></span></p><br>
+				<p><b>Port number: </b><span id="port"></span></p><br>
+
+				<form name="settingsForm">
+					<label for="url_id"><b>Url</b></label><br>
+					<input type="text" id="url_id" name="url"> <br><br>
+					<label for="portNumber_id"><b>Port number</b></label><br>
+					<input type="number" id="portNumber_id" name="portNumber"><br><br>
+					<input type="submit" value="Update" class="formInputButton">
+				</form>
 			</div>
             	
 		</div>	
 
       </section>
     </main>
-	<script src="playerLogic.js"></script>	
+	<script src="playerLogic.js"></script>
 	<script src="script.js"></script>
-	
+	<script>document.getElementById("url").innerHTML = url;</script>
+    <script>document.getElementById("port").innerHTML = port;</script>
   </body>
  </html>
