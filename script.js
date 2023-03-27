@@ -1,7 +1,7 @@
 let socket;
 let connect = false;
 let url = "192.168.8.185";
-let port = "4121";
+let port = "4122";
 
 function toggleConnection() {
     connect = !connect;
@@ -49,21 +49,33 @@ function toggleAlarm() {
 
 function toggleLight() {
     if (document.getElementById("outdoor-lamp-checkbox").checked === true) {
-        socket.emit("won");
-        console.log("Light On");
+        socket.emit("-ol_1");
+        socket.emit("-il_255");
+        console.log("Outdoor Light On");
     } else {
-        socket.emit("woff");
-        console.log("Light Off");
+        socket.emit("-ol_0");
+        socket.emit("-il_0");
+        console.log("Outdoor Light Off");
     }
 }
 
 function toggleFan() {
     if (document.getElementById("fan-checkbox").checked === true) {
-        socket.emit("-fan_200");
+        socket.emit("-fan_255");
         console.log("Fan On");
     } else {
         socket.emit("-fan_0");
         console.log("Fan Off");
+    }
+}
+
+function toggleRelay() {
+    if (document.getElementById("relay-checkbox").checked === true) {
+        socket.emit("-re_1");
+        console.log("Relay On");
+    } else {
+        socket.emit("-re_0");
+        console.log("Relay Off");
     }
 }
 
