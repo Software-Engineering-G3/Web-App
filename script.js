@@ -48,7 +48,7 @@ function toggleAlarm() {
 }
 
 function toggleLight() {
-    if (document.getElementById("light-checkbox").checked === true) {
+    if (document.getElementById("outdoor-lamp-checkbox").checked === true) {
         socket.emit("won");
         console.log("Light On");
     } else {
@@ -59,10 +59,10 @@ function toggleLight() {
 
 function toggleFan() {
     if (document.getElementById("fan-checkbox").checked === true) {
-        socket.emit("fa200");
+        socket.emit("-fan_200");
         console.log("Fan On");
     } else {
-        socket.emit("fs");
+        socket.emit("-fan_0");
         console.log("Fan Off");
     }
 }
