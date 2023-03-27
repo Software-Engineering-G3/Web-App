@@ -2,6 +2,8 @@ let socket;
 let connect = false;
 let url = "192.168.8.185";
 let port = "4122";
+document.getElementById("url").innerHTML = url;
+document.getElementById("port").innerHTML = port;
 
 function toggleConnection() {
     connect = !connect;
@@ -146,11 +148,15 @@ card.addEventListener("click", function (e) {
 let form = document.forms["settingsForm"];
 form.addEventListener("submit", getValues);
 
+
+
 function getValues(event){
 
-   event.preventDefault();
-   let url = this.url.value
-   let portNumber = this.portNumber.value
+    event.preventDefault();
+    url = this.url.value
+    port = this.portNumber.value
+    document.getElementById("url").innerHTML = url;
+    document.getElementById("port").innerHTML = port;
 }
 
 
