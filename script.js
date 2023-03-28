@@ -1,7 +1,12 @@
+// Socket.io
 let socket;
 let connect = false;
+
+// Connection settings
 let url = "192.168.8.185";
 let port = "4122";
+
+// Write the settings to the page
 document.getElementById("url").innerHTML = url;
 document.getElementById("port").innerHTML = port;
 
@@ -93,54 +98,54 @@ function pause() {
 
 
 // DIV game of shadows
-let btnActuators=document.getElementById('btnActuators');
-let btnMusic=document.getElementById('btnMusic');
-let btnSettings=document.getElementById('btnSettings');
-let btnSensors=document.getElementById('btnSensors');
+let btnActuators = document.getElementById('btnActuators');
+let btnMusic = document.getElementById('btnMusic');
+let btnSettings = document.getElementById('btnSettings');
+let btnSensors = document.getElementById('btnSensors');
 
-let divActuators=document.getElementById('actuators');
-let divSensors=document.getElementById('sensors');
-let divMusic=document.getElementById('musicPlayer');
-let divSettings=document.getElementById('settings');
+let divActuators = document.getElementById('actuators');
+let divSensors = document.getElementById('sensors');
+let divMusic = document.getElementById('musicPlayer');
+let divSettings = document.getElementById('settings');
 
-btnSensors.addEventListener('click',() =>{
+btnSensors.addEventListener('click', () => {
     divSensors.style.display = 'block';
     divMusic.style.display = 'none';
     divSettings.style.display = 'none';
     divActuators.style.display = 'none';
-    
-})
 
-btnActuators.addEventListener('click',() =>{
+});
+
+btnActuators.addEventListener('click', () => {
     divSensors.style.display = 'none';
     divMusic.style.display = 'none';
     divSettings.style.display = 'none';
     divActuators.style.display = 'block';
-    
-})
 
-btnMusic.addEventListener('click',() =>{
+});
+
+btnMusic.addEventListener('click', () => {
     divSensors.style.display = 'none';
     divActuators.style.display = 'none';
     divSettings.style.display = 'none';
     divMusic.style.display = 'block';
-    
-})
 
-btnSettings.addEventListener('click',() =>{
+});
+
+btnSettings.addEventListener('click', () => {
     divSensors.style.display = 'none';
     divActuators.style.display = 'none';
     divMusic.style.display = 'none';
     divSettings.style.display = 'block';
-    
-})
+
+});
 
 //flipping card 
 
 const card = document.querySelector(".flip-card");
 
 card.addEventListener("click", function (e) {
-  card.classList.toggle('is-flipped');
+    card.classList.toggle('is-flipped');
 });
 
 
@@ -150,11 +155,11 @@ form.addEventListener("submit", getValues);
 
 
 
-function getValues(event){
+function getValues(event) {
 
     event.preventDefault();
-    url = this.url.value
-    port = this.portNumber.value
+    url = this.url.value;
+    port = this.portNumber.value;
     document.getElementById("url").innerHTML = url;
     document.getElementById("port").innerHTML = port;
 }
