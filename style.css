@@ -549,3 +549,91 @@ animation-delay: 1.4s;
 	font-weight: bold;
 	margin-top: 1.25rem;
   }
+
+
+  /* LOGIN PAGE */
+
+  .login{
+	position: relative;
+	padding:60px;
+	background: rgba(255,255,255,0.25);
+	backdrop-filter: blur(15px);
+	border:1px solid #fff;
+	border-bottom: rgba(255,255,255,0.5);
+	border-right:rgba(255,255,255,0.5); 
+	border-radius: 20px;
+	width:700px;
+	display:flex;
+	flex-direction:column;
+	gap:30px;
+	box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+
+  }
+  .login h1{
+	position:relative;
+	width:100%;
+	text-align:center;
+	font-size: 2.5em;
+	font-weight:600;
+	color: #8f2c24;
+	margin-bottom:10px;
+  }
+  .login img{
+	position:relative;
+	margin-left: 25%;
+}
+  .login .inputBox {
+	position:relative;
+  }
+  .login .inputBox input{
+	position:relative;
+	width:100%;
+	padding: 15px 20px;
+	outline: none;
+	font-size: 1.25em; 
+	color: #8f2c24;
+	border-radius:5px;
+	background: #fff;
+	border:none;
+	margin-bottom:30px;
+  }
+  .login .inputBox #btnConnect{
+	position:relative;
+	border:none;
+	outline: none;
+	background:#8f2c24;
+	color:#fff;
+	cursor:pointer;
+	font-size: 1.25em;
+	font-weight:500;
+	transition: 0.5s;
+  }
+  .login .inputBox #btnConnect:hover{
+	
+	background:#d64c42;
+
+  }
+
+  /* Dynamic background */
+  .bgLog{
+	background: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+
+	
+
+
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
