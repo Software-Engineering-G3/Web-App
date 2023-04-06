@@ -303,11 +303,11 @@ main{
   }
   
   input:checked + .slider {
-	background-color: #1589dc;
+	background-color: #29d007;
   }
   
   input:focus + .slider {
-	box-shadow: 0 0 1px #2196F3;
+	box-shadow: 0 0 1px #29d007;
   }
   
   input:checked + .slider:before {
@@ -616,7 +616,7 @@ animation-delay: 1.4s;
 
   /* Dynamic background */
   .bgLog{
-	background: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+	background: linear-gradient(43deg, #4158D0 0%, #C850C0 6%, #FFCC70 100%);
 
 	
 

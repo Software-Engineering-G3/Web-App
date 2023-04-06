@@ -3,19 +3,34 @@ let socket;
 let connect = false;
 
 // Connection settings
-let url = "192.168.8.185";
+let url = "localhost";
 let port = "4122";
 
 // Write the settings to the page
 document.getElementById("url").innerHTML = url;
 document.getElementById("port").innerHTML = port;
+let switchRelay=document.getElementById("relay-checkbox");
+let switchAlarm=document.getElementById("alarm-checkbox");
+let switchFan=document.getElementById("fan-checkbox");
+let switchWindow=document.getElementById("window-checkbox");
+let switchOutdoorLamp=document.getElementById("outdoor-lamp-checkbox");
+let switchDoor=document.getElementById("door-checkbox");
 
+window.onload = function() {
+    toggleConnection();
+};
+
+function checkConnection() {
+    //TODO check credentials, if they match we load the main page 
+    window.location.replace("main.html");
+}
+  
 function toggleConnection() {
     connect = !connect;
     console.log(connect);
     if (connect === true) {
-        document.getElementById("connection-status").innerHTML = "Connecting...";
-        document.getElementById("connect-button").innerHTML = "Cancel";
+       // document.getElementById("connection-status").innerHTML = "Connecting...";
+        //document.getElementById("connect-button").innerHTML = "Cancel";
         socket = io.connect("http://" + url + ":" + port, {
             extraheaders: {
                 "Access-Control-Request-Private-Network": "true"
@@ -25,22 +40,49 @@ function toggleConnection() {
     } else {
         socket.disconnect();
         document.getElementById("connection-status").innerHTML = "Disconnected";
-        document.getElementById("connect-button").innerHTML = "Connect";
+        document.getElementById("connect-button").innerHTML = " Connect";
     }
 }
 
 function registerSocketEvents() {
     socket.on('connect', function () {
-        document.getElementById("connection-status").innerHTML = "Connected";
-        document.getElementById("connect-button").innerHTML = "Disconnect";
+        document.getElementById("connection-status").innerHTML = " Connected";
+        //document.getElementById("connect-button").innerHTML = "Disconnect";
         console.log("Connected");
     });
 
     socket.on('disconnect', function () {
-        document.getElementById("connection-status").innerHTML = "Connecting...";
-        document.getElementById("connect-button").innerHTML = "Cancel";
-        console.log("Disconnected");
+        //TODO 
     });
+
+    socket.on('Info', (eventName, eventInfo) => {
+        eventName.forEach(actuators => {
+            if(actuators.component=="dr" && actuators.state==1){
+                switchDoor.checked=true;
+            }
+            if(actuators.component=="wi" && actuators.state==1 ){
+                switchWindow.checked=true;
+            }
+            if(actuators.component=="bz" && actuators.state==0 ){
+                switchAlarm.checked=true;
+            }
+            if(actuators.component=="fan" && actuators.state==0 ){
+                switchFan.checked=true;
+                
+            }
+            if(actuators.component=="il" && actuators.state==1 ){
+                // TODO check for intensity with alberto 
+            }
+            if(actuators.component=="ol" && actuators.state==1 ){
+                switchOutdoorLamp.checked=true;
+            }
+            if(actuators.component=="re" && actuators.state==1 ){
+                switchRelay.checked=true;
+            }
+            console.log(actuators); // temporary to be deleted
+          
+        });
+      });
 
 }
 
