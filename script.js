@@ -3,7 +3,7 @@ let socket;
 let connect = false;
 
 // Connection settings
-let url = "localhost";
+let url = "192.168.8.185";
 let port = "4122";
 
 // Write the settings to the page
@@ -96,7 +96,7 @@ function toggleAlarm() {
     }
 }
 
-function toggleLight() {
+function toggleOutdoorLight() {
     if (document.getElementById("outdoor-lamp-checkbox").checked === true) {
         socket.emit("-ol_1");
         socket.emit("-il_255");
@@ -106,6 +106,12 @@ function toggleLight() {
         socket.emit("-il_0");
         console.log("Outdoor Light Off");
     }
+}
+
+function updateIndoorLight(event) {
+    let intensity = document.getElementById("indoor-light-range").value;
+    socket.emit("-il_" + intensity);
+    console.log("Indoor Light: " + intensity);
 }
 
 function toggleFan() {
@@ -190,6 +196,17 @@ const card = document.querySelector(".flip-card");
 card.addEventListener("click", function (e) {
     card.classList.toggle('is-flipped');
 });
+
+// Disable propagation of click event to parent element
+const elements = [
+    document.querySelector("#outdoor-light-checkbox-span"),
+    document.querySelector("#outdoor-light-checkbox"),
+    document.querySelector("#indoor-light-range"),
+]
+
+for (let i = 0; i < elements.length; i ++) {
+    elements[i].addEventListener("click", function(event) { event.stopPropagation(); });
+}
 
 
 // get settings input from form

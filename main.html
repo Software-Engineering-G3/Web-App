@@ -199,11 +199,11 @@
 								<img class="card-img-top" src="images/light.png" alt="Card image lights" height="80px"
 									width="80px">
 								<h1 class="card-title">Indoor :</h1>
-								<input type="range" min="0" max="255" value="10" class="range" id="myRange">
+								<input type="range" min="0" max="255" value="10" class="range" id="indoor-light-range" onchange="updateIndoorLight()">
 								<h1 class="card-title">Outdoor :</h1>
 								<label class="switch">
-									<input type="checkbox" id="outdoor-lamp-checkbox" onchange="toggleLight()">
-									<span class="slider round"></span>
+									<input type="checkbox" id="outdoor-light-checkbox" onchange="toggleOutdoorLight()">
+									<span class="slider round" id="outdoor-light-checkbox-span"></span>
 								</label>
 							</div>
 						</div>
