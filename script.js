@@ -97,13 +97,11 @@ function toggleAlarm() {
 }
 
 function toggleOutdoorLight() {
-    if (document.getElementById("outdoor-lamp-checkbox").checked === true) {
+    if (document.getElementById("outdoor-light-checkbox").checked === true) {
         socket.emit("-ol_1");
-        socket.emit("-il_255");
         console.log("Outdoor Light On");
     } else {
         socket.emit("-ol_0");
-        socket.emit("-il_0");
         console.log("Outdoor Light Off");
     }
 }
