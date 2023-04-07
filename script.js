@@ -3,8 +3,8 @@ let socket;
 let connect = false;
 
 // Connection settings
-let url = "192.168.8.185";
-let port = "4122";
+let url = "85.197.159.42";
+let port = "4121";
 
 // Write the settings to the page
 document.getElementById("url").innerHTML = url;
@@ -13,7 +13,7 @@ let switchRelay=document.getElementById("relay-checkbox");
 let switchAlarm=document.getElementById("alarm-checkbox");
 let switchFan=document.getElementById("fan-checkbox");
 let switchWindow=document.getElementById("window-checkbox");
-let switchOutdoorLamp=document.getElementById("outdoor-lamp-checkbox");
+let switchOutdoorLamp=document.getElementById("outdoor-light-checkbox");
 let switchDoor=document.getElementById("door-checkbox");
 
 window.onload = function() {
@@ -31,7 +31,7 @@ function toggleConnection() {
     if (connect === true) {
        // document.getElementById("connection-status").innerHTML = "Connecting...";
         //document.getElementById("connect-button").innerHTML = "Cancel";
-        socket = io.connect("http://" + url + ":" + port, {
+        socket = io.connect("https://" + url + ":" + port, {
             extraheaders: {
                 "Access-Control-Request-Private-Network": "true"
             }
@@ -48,11 +48,12 @@ function registerSocketEvents() {
     socket.on('connect', function () {
         document.getElementById("connection-status").innerHTML = " Connected";
         //document.getElementById("connect-button").innerHTML = "Disconnect";
-        console.log("Connected");
+        console.log("Connected to server");
     });
 
     socket.on('disconnect', function () {
-        //TODO 
+        //TODO
+        console.log("Disconnected from server");
     });
 
     socket.on('Info', (eventName, eventInfo) => {
