@@ -86,14 +86,43 @@ function registerSocketEvents() {
 
 }
 
+// ACTUATORS
+
 function toggleAlarm() {
     if (document.getElementById("alarm-checkbox").checked === true) {
-        socket.emit("alarm-on");
+        socket.emit("-bz_1");
         console.log("Alarm On");
     } else {
-        socket.emit("alarm-off");
+        socket.emit("-bz_0");
         console.log("Alarm Off");
     }
+}
+
+function toggleDoor() {
+    if (document.getElementById("door-checkbox").checked === true) {
+        socket.emit("-dr_1");
+        console.log("Door Open");
+    } else {
+        socket.emit("-dr_0");
+        console.log("Door Closed");
+    }
+}
+
+function updateFan() {
+    if (document.getElementById("fan-checkbox").checked === true) {
+        let speed = document.getElementById("fanRange").value;
+        socket.emit("-fan_" + speed);
+        console.log("Fan On, speed: " + speed);
+    } else {
+        socket.emit("-fan_0");
+        console.log("Fan Off");
+    }
+}
+
+function updateIndoorLight(event) {
+    let intensity = document.getElementById("indoor-light-range").value;
+    socket.emit("-il_" + intensity);
+    console.log("Indoor Light: " + intensity);
 }
 
 function toggleOutdoorLight() {
@@ -106,23 +135,6 @@ function toggleOutdoorLight() {
     }
 }
 
-function updateIndoorLight(event) {
-    let intensity = document.getElementById("indoor-light-range").value;
-    socket.emit("-il_" + intensity);
-    console.log("Indoor Light: " + intensity);
-}
-
-function toggleFan() {
-    if (document.getElementById("fan-checkbox").checked === true) {
-        let speed = document.getElementById("fanRange").value;
-        socket.emit("-fan_" + speed);
-        console.log("Fan On, speed: " + speed);
-    } else {
-        socket.emit("-fan_0");
-        console.log("Fan Off");
-    }
-}
-
 function toggleRelay() {
     if (document.getElementById("relay-checkbox").checked === true) {
         socket.emit("-re_1");
@@ -130,6 +142,16 @@ function toggleRelay() {
     } else {
         socket.emit("-re_0");
         console.log("Relay Off");
+    }
+}
+
+function toggleWindow() {
+    if (document.getElementById("window-checkbox").checked === true) {
+        socket.emit("-wi_1");
+        console.log("Window Open");
+    } else {
+        socket.emit("-wi_0");
+        console.log("Window Closed");
     }
 }
 

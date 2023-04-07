@@ -159,7 +159,7 @@
 						<div class="card-content">
 							<h1 class="card-title">Door</h1>
 							<label class="switch">
-								<input type="checkbox" id="door-checkbox">
+								<input type="checkbox" id="door-checkbox" onchange="toggleDoor()">
 								<span class="slider round"></span>
 							</label>
 						</div>
@@ -172,11 +172,11 @@
 						<div class="card-content">
 							<h1 class="card-title">Fan</h1>
 							<label class="switch">
-								<input type="checkbox" id="fan-checkbox" onchange="toggleFan()">
+								<input type="checkbox" id="fan-checkbox" onchange="updateFan()">
 								<span class="slider round"></span>
 							</label>
 							<label class="" id="fan-speed">
-								<input type="range" min="100" max="255" value="255" class="range" id="fanRange" onchange="toggleFan()">
+								<input type="range" min="100" max="255" value="255" class="range" id="fanRange" onchange="updateFan()">
 							</label>
 						</div>
 					</div>
@@ -231,7 +231,7 @@
 						<div class="card-content">
 							<h1 class="card-title">Window</h1>
 							<label class="switch">
-								<input type="checkbox" id="window-checkbox">
+								<input type="checkbox" id="window-checkbox" onchange="toggleWindow()">
 								<span class="slider round"></span>
 							</label>
 						</div>
