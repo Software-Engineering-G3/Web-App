@@ -110,8 +110,9 @@ function toggleLight() {
 
 function toggleFan() {
     if (document.getElementById("fan-checkbox").checked === true) {
-        socket.emit("-fan_255");
-        console.log("Fan On");
+        let speed = document.getElementById("fanRange").value;
+        socket.emit("-fan_" + speed);
+        console.log("Fan On, speed: " + speed);
     } else {
         socket.emit("-fan_0");
         console.log("Fan Off");

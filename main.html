@@ -167,14 +167,16 @@
 					<!-- Card with labels-->
 					<div class="card-wrap animate glow delay-3">
 						<div class="card-header five">
-							<img class="card-img-top" src="images/fan.png" alt="Card image fan" height="120px"
-								width="130px">
+							<img class="card-img-top" src="images/fan.png" alt="Card image fan" height="120px" width="130px">
 						</div>
 						<div class="card-content">
 							<h1 class="card-title">Fan</h1>
 							<label class="switch">
 								<input type="checkbox" id="fan-checkbox" onchange="toggleFan()">
 								<span class="slider round"></span>
+							</label>
+							<label class="" id="fan-speed">
+								<input type="range" min="100" max="255" value="10" class="range" id="fanRange" onchange="toggleFan()">
 							</label>
 						</div>
 					</div>
@@ -197,7 +199,7 @@
 								<img class="card-img-top" src="images/light.png" alt="Card image lights" height="80px"
 									width="80px">
 								<h1 class="card-title">Indoor :</h1>
-								<input type="range" min="1" max="255" value="10" class="range" id="myRange">
+								<input type="range" min="0" max="255" value="10" class="range" id="myRange">
 								<h1 class="card-title">Outdoor :</h1>
 								<label class="switch">
 									<input type="checkbox" id="outdoor-lamp-checkbox" onchange="toggleLight()">
