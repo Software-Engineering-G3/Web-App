@@ -5,7 +5,7 @@ let connect = false;
 // Connection settings
 let url = "85.197.159.42";
 let port = "4121";
-let type = "http";
+let type = "https";
 
 // Write the settings to the page
 document.getElementById("url").innerHTML = url;
