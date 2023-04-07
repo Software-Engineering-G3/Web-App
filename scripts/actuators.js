@@ -20,7 +20,7 @@ function toggleDoor() {
 
 function updateFan() {
     if (document.getElementById("fan-checkbox").checked === true) {
-        let speed = document.getElementById("fanRange").value;
+        let speed = document.getElementById("fan-range").value;
         socket.emit("-fan_" + speed);
         console.log("Fan On, speed: " + speed);
     } else {

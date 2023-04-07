@@ -12,8 +12,10 @@ document.getElementById("port").innerHTML = port;
 let switchRelay = document.getElementById("relay-checkbox");
 let switchAlarm = document.getElementById("alarm-checkbox");
 let switchFan = document.getElementById("fan-checkbox");
+let sliderFan = document.getElementById("fan-range");
 let switchWindow = document.getElementById("window-checkbox");
-let switchOutdoorLamp = document.getElementById("outdoor-light-checkbox");
+let switchOutdoorLight = document.getElementById("outdoor-light-checkbox");
+let sliderIndoorLight = document.getElementById("indoor-light-range");
 let switchDoor = document.getElementById("door-checkbox");
 
 window.onload = function () {
@@ -57,30 +59,37 @@ function registerSocketEvents() {
     });
 
     socket.on('Info', (eventName, eventInfo) => {
-        eventName.forEach(actuators => {
-            if (actuators.component == "dr" && actuators.state == 1) {
+        eventName.forEach(actuator => {
+            // Door
+            if (actuator.component == "dr" && actuator.state == 1) {
                 switchDoor.checked = true;
             }
-            if (actuators.component == "wi" && actuators.state == 1) {
+            // Window
+            if (actuator.component == "wi" && actuator.state == 1) {
                 switchWindow.checked = true;
             }
-            if (actuators.component == "bz" && actuators.state == 0) {
+            // Buzzer
+            if (actuator.component == "bz" && actuator.state == 1) {
                 switchAlarm.checked = true;
             }
-            if (actuators.component == "fan" && actuators.state == 0) {
+            // Fan
+            if (actuator.component == "fan" && actuator.state != 0) {
                 switchFan.checked = true;
-
+                sliderFan.value = actuator.state;
             }
-            if (actuators.component == "il" && actuators.state == 1) {
-                // TODO check for intensity with alberto 
+            // Indoor light
+            if (actuator.component == "il" && actuator.state == 1) {
+                sliderIndoorLight.value = actuator.state;
             }
-            if (actuators.component == "ol" && actuators.state == 1) {
-                switchOutdoorLamp.checked = true;
+            // Outdoor light
+            if (actuator.component == "ol" && actuator.state == 1) {
+                switchOutdoorLight.checked = true;
             }
-            if (actuators.component == "re" && actuators.state == 1) {
+            // Relay
+            if (actuator.component == "re" && actuator.state == 1) {
                 switchRelay.checked = true;
             }
-            console.log(actuators); // temporary to be deleted
+            console.log(actuator);
 
         });
     });
