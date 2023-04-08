@@ -25,50 +25,32 @@ function loadSong(song) {
 
 // Play song
 function playSong() {
-  musicContainer.classList.add('play');
-  playBtn.querySelector('i.fas').classList.remove('fa-play');
-  playBtn.querySelector('i.fas').classList.add('fa-pause');
-
-  audio.play();
+  socket.emit("+play music")
+  console.log("Play music")
 }
 
 // Pause song
 function pauseSong() {
-  musicContainer.classList.remove('play');
-  playBtn.querySelector('i.fas').classList.add('fa-play');
-  playBtn.querySelector('i.fas').classList.remove('fa-pause');
-
-  audio.pause();
+  socket.emit("+pause music")
+  console.log("Pause music")
 }
 
 // Previous song
 function prevSong() {
-  songIndex--;
-
-  if (songIndex < 0) {
-    songIndex = songs.length - 1;
-  }
-
-  loadSong(songs[songIndex]);
-
-  playSong();
+  socket.emit("+previous song")
+  console.log("Previous song")
 }
 
 // Next song
 function nextSong() {
-  songIndex++;
-
-  if (songIndex > songs.length - 1) {
-    songIndex = 0;
-  }
-
-  loadSong(songs[songIndex]);
-
-  playSong();
+  socket.emit("+next song");
+  console.log("Next song");
 }
 
 
-// Event listeners
+// EVENT LISTENERS
+
+// Play or pause song
 playBtn.addEventListener('click', () => {
   const isPlaying = musicContainer.classList.contains('play');
 
@@ -82,6 +64,3 @@ playBtn.addEventListener('click', () => {
 // Change song
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
-
-// Song ends
-audio.addEventListener('ended', nextSong);
