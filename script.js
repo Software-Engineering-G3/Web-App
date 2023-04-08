@@ -72,16 +72,16 @@ function registerSocketEvents() {
         eventName.forEach(device => {
             // ACTUATORS
             // Door
-            if (device.component == "dr" && device.state == 1) {
-                switchDoor.checked = true;
+            if (device.component == "dr") {
+                switchDoor.checked = device.state;
             }
             // Window
-            if (device.component == "wi" && device.state == 1) {
-                switchWindow.checked = true;
+            if (device.component == "wi") {
+                switchWindow.checked = device.state;
             }
             // Buzzer
-            if (device.component == "bz" && device.state == 1) {
-                switchAlarm.checked = true;
+            if (device.component == "bz") {
+                switchAlarm.checked = device.state;
             }
             // Fan
             if (device.component == "fan") {
@@ -98,12 +98,12 @@ function registerSocketEvents() {
                 sliderIndoorLight.value = device.state;
             }
             // Outdoor light
-            if (device.component == "ol" && device.state == 1) {
-                switchOutdoorLight.checked = true;
+            if (device.component == "ol") {
+                switchOutdoorLight.checked = device.state;
             }
             // Relay
-            if (device.component == "re" && device.state == 1) {
-                switchRelay.checked = true;
+            if (device.component == "re") {
+                switchRelay.checked = device.state;
             }
             // SENSORS
             if (device.component == "light") {
