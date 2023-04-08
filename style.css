@@ -637,3 +637,11 @@ animation-delay: 1.4s;
 		background-position: 0% 50%;
 	}
 }
+
+input[name="https"] {
+	width: auto;
+}
+
+#connection-configuration {
+	margin: 2em;
+}

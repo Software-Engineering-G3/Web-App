@@ -267,15 +267,19 @@
 			<!-- Settings-->
 			<div class="objet" id="settings">
 				<div class="status" style="text-align: center; padding-top:100px;">
-					<h1>Settings</h1><br>
-					<h2>Change your Web configuration</h2><br><br>
-					<p><b>Url: </b><span id="url"></span></p><br>
-					<p><b>Port number: </b><span id="port"></span></p><br>
-					<form name="settingsForm">
-						<label for="url_id"><b>Url</b></label><br>
-						<input type="text" id="url_id" name="url"> <br><br>
-						<label for="portNumber_id"><b>Port number</b></label><br>
-						<input type="number" id="portNumber_id" name="portNumber"><br><br>
+					<div id="connection-configuration">
+						<h1>Settings</h1><br>
+						<h2>Change your Web configuration</h2><br>
+						<p><b>IP address: </b><span id="ip"></span></p><br>
+						<p><b>Port number: </b><span id="port"></span></p><br>
+						<label for="https"><b>Https: </b></label><input type="checkbox" id="https" name="https" disabled="disabled">
+					</div>
+					<form name="update-connection-settings">
+						<label for="update_ip"><b>IP address</b></label><br>
+						<input type="text" id="update_ip" name="ip"> <br>
+						<label for="update_port"><b>Port number</b></label><br>
+						<input type="number" id="update_port" name="port"><br>
+						<label for="update_https"><b>Https: </b></label><input type="checkbox" id="update_https" name="https"><br>
 						<input type="submit" value="Update" class="formInputButton">
 					</form>
 				</div>

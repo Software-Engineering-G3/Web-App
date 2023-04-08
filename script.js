@@ -3,13 +3,14 @@ let socket;
 let connect = false;
 
 // Connection settings
-let url = "85.197.159.42";
-let port = "4121";
-let type = "https";
+let ip = localStorage.getItem("ip") || "85.197.159.42";
+let port = localStorage.getItem("port") || "4121";
+let https = localStorage.getItem("https") || true;
 
 // Write the settings to the page
-document.getElementById("url").innerHTML = url;
+document.getElementById("ip").innerHTML = ip;
 document.getElementById("port").innerHTML = port;
+document.getElementById("https").checked = true;
 
 // Actuators
 let switchRelay = document.getElementById("relay-checkbox");
@@ -42,8 +43,14 @@ function toggleConnection() {
     console.log(connect);
     if (connect === true) {
         // document.getElementById("connection-status").innerHTML = "Connecting...";
-        //document.getElementById("connect-button").innerHTML = "Cancel";
-        socket = io.connect(type + "://" + url + ":" + port, {
+        // document.getElementById("connect-button").innerHTML = "Cancel";
+        let type;
+        if (https === true) {
+            type = "https";
+        } else {
+            type = "http";
+        }
+        socket = io.connect(type + "://" + ip + ":" + port, {
             extraheaders: {
                 "Access-Control-Request-Private-Network": "true"
             }
@@ -202,7 +209,7 @@ for (let i = 0; i < elements.length; i++) {
 
 
 // get settings input from form
-let form = document.forms["settingsForm"];
+let form = document.forms["update-connection-settings"];
 form.addEventListener("submit", getValues);
 
 
@@ -210,10 +217,15 @@ form.addEventListener("submit", getValues);
 function getValues(event) {
 
     event.preventDefault();
-    url = this.url.value;
-    port = this.portNumber.value;
-    document.getElementById("url").innerHTML = url;
+    ip = this.ip.value;
+    port = this.port.value;
+    https = this.https.checked;
+    localStorage.setItem("ip", ip);
+    localStorage.setItem("port", port);
+    localStorage.setItem("https", https);
+    document.getElementById("ip").innerHTML = ip;
     document.getElementById("port").innerHTML = port;
+    document.getElementById("https").checked = https;
 }
 
 
