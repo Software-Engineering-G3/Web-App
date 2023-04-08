@@ -84,12 +84,17 @@ function registerSocketEvents() {
                 switchAlarm.checked = true;
             }
             // Fan
-            if (device.component == "fan" && device.state != 0) {
-                switchFan.checked = true;
-                sliderFan.value = device.state;
+            if (device.component == "fan") {
+                if (device.state != 0) {
+                    switchFan.checked = true;
+                    sliderFan.value = device.state;
+                }
+                if (device.state == 0) {
+                    switchFan.checked = false;
+                }
             }
             // Indoor light
-            if (device.component == "il" && device.state == 1) {
+            if (device.component == "il") {
                 sliderIndoorLight.value = device.state;
             }
             // Outdoor light
