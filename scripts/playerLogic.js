@@ -3,9 +3,9 @@ const playBtn = document.getElementById('play');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 
-const audio = document.getElementById('audio');
 const title = document.getElementById('title');
 const cover = document.getElementById('cover');
+const volume = document.getElementById('volume-range');
 
 // Update UI
 function loadSong(title, artist) {
@@ -27,7 +27,8 @@ function paused() {
 }
 
 function volumeChanged(volume) {
-  
+  volume.value = volume;
+  console.log("Volume changed to: " + volume);
 }
 
 // EVENT LISTENERS
@@ -45,28 +46,31 @@ playBtn.addEventListener('click', () => {
 
 // Play song
 function playSong() {
-  socket.emit("+play music")
-  console.log("Play music")
+  socket.emit("+play music");
+  console.log("Play music");
 }
 
 // Pause song
 function pauseSong() {
-  socket.emit("+pause music")
-  console.log("Pause music")
+  socket.emit("+pause music");
+  console.log("Pause music");
 }
-
-// Change song
-prevBtn.addEventListener('click', prevSong);
-nextBtn.addEventListener('click', nextSong);
 
 // Previous song
-function prevSong() {
-  socket.emit("+previous song")
-  console.log("Previous song")
-}
+prevBtn.addEventListener('click', () => {
+  socket.emit("+previous song");
+  console.log("Previous song");
+});
 
 // Next song
-function nextSong() {
+nextBtn.addEventListener('click', () => {
   socket.emit("+next song");
   console.log("Next song");
-}
+});
+
+// Volume
+volume.addEventListener('change', () => {
+  let volume = volume.value;
+  socket.emit("+volume " + volume);
+  console.log("Requested volume change to: " + volume);
+});
