@@ -423,7 +423,10 @@ top: 0px;
 left: 120px;
 width: 70%;
 padding: 10px 10px 10px 150px;
-opacity: 0;
+/* 
+The title of the song should always be visible
+opacity: 0; 
+*/
 transform: translateY(0%);
 transition: transform 0.3s ease-in, opacity 0.3s ease-in;
 z-index: 0;

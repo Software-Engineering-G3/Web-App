@@ -245,11 +245,10 @@
 				</div>
 				<div class="music-container animate glow delay-2" id="music-container">
 					<div class="music-info">
-						<h4 id="title"></h4>
+						<h4 id="title">Title - Artist</h4>
 					</div>
-					<audio src="music/Summer Montage  Madeline.mp3" id="audio"></audio>
 					<div class="img-container">
-						<img src="images/Summer Montage  Madeline.jpg" alt="music-cover" id="cover" />
+						<img src="images/music ring.webp" alt="music-cover" id="cover" />
 					</div>
 					<div class="navigation">
 						<button id="prev" class="action-btn">
@@ -261,6 +260,12 @@
 						<button id="next" class="action-btn">
 							<i class="fas fa-forward"></i>
 						</button>
+					</div>
+					<i class="fas fa-volume"></i>
+					<div class="volume-container">
+						<label class="" id="fan-speed">
+							<input type="range" min="0" max="100" value="25" class="range" id="volume-range" onchange="updateVolume()">
+						</label>
 					</div>
 				</div>
 			</div>
