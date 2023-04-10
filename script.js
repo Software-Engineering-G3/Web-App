@@ -1,16 +1,31 @@
 // Socket.io
 let socket;
-let connect = false;
+let connected;
+
+// Conncetion parameters
+let ip;
+let port;
+let https;
+let type;
+updateConnectionSettings();
 
 // Connection settings
-let ip = localStorage.getItem("ip") || "85.197.159.42";
-let port = localStorage.getItem("port") || "4121";
-let https = localStorage.getItem("https") || true;
+function updateConnectionSettings() {
+    ip = localStorage.getItem("ip") || "85.197.159.42";
+    port = localStorage.getItem("port") || "4121";
+    type = localStorage.getItem("type") || "https";
+    if (localStorage.hasOwnProperty("type")) {
+        https = localStorage.getItem("type") === "https";
+    }
+    else {
+        https = "true";
+    }
 
-// Write the settings to the page
-document.getElementById("ip").innerHTML = ip;
-document.getElementById("port").innerHTML = port;
-document.getElementById("https").checked = true;
+    // Write the settings to the page
+    document.getElementById("ip").innerHTML = ip;
+    document.getElementById("port").innerHTML = port;
+    document.getElementById("https").checked = https;
+}
 
 // Actuators
 let switchRelay = document.getElementById("relay-checkbox");
@@ -30,7 +45,7 @@ let soilHumidity = document.getElementById("soil-humidity-value");
 let steam = document.getElementById("steam-value");
 
 window.onload = function () {
-    toggleConnection();
+    connect();
 };
 
 function checkConnection() {
@@ -38,30 +53,26 @@ function checkConnection() {
     window.location.replace("main.html");
 }
 
-function toggleConnection() {
-    connect = !connect;
-    console.log(connect);
-    if (connect === true) {
-        // document.getElementById("connection-status").innerHTML = "Connecting...";
-        // document.getElementById("connect-button").innerHTML = "Cancel";
-        let type;
-        if (https === true) {
-            type = "https";
-        } else {
-            type = "http";
+function connect() {
+    console.log("Connecting...");
+    document.getElementById("connection-status").innerHTML = "Connecting...";
+    // document.getElementById("connect-button").innerHTML = "Cancel";
+    socket = io.connect(type + "://" + ip + ":" + port, {
+        extraheaders: {
+            "Access-Control-Request-Private-Network": "true"
         }
-        socket = io.connect(type + "://" + ip + ":" + port, {
-            extraheaders: {
-                "Access-Control-Request-Private-Network": "true"
-            }
-        });
-        registerSocketEvents();
-    } else {
-        socket.disconnect();
-        document.getElementById("connection-status").innerHTML = "Disconnected";
-        document.getElementById("connect-button").innerHTML = " Connect";
-    }
+    });
+    connected = true;
+    registerSocketEvents();
 }
+
+function disconnect() {
+    socket.disconnect();
+    connected = false;
+    document.getElementById("connection-status").innerHTML = "Disconnected";
+    // document.getElementById("connect-button").innerHTML = " Connect";
+}
+
 
 function registerSocketEvents() {
     socket.on('connect', function () {
@@ -76,6 +87,7 @@ function registerSocketEvents() {
     });
 
     socket.on('Info', (eventName, eventInfo) => {
+        console.log(eventName);
         eventName.forEach(device => {
             // ACTUATORS
             // Door
@@ -144,7 +156,6 @@ function registerSocketEvents() {
                     paused();
                 }
             }
-            console.log(device);
         });
     });
 }
@@ -220,17 +231,17 @@ form.addEventListener("submit", getValues);
 
 
 function getValues(event) {
-
     event.preventDefault();
-    ip = this.ip.value;
-    port = this.port.value;
-    https = this.https.checked;
-    localStorage.setItem("ip", ip);
-    localStorage.setItem("port", port);
-    localStorage.setItem("https", https);
-    document.getElementById("ip").innerHTML = ip;
-    document.getElementById("port").innerHTML = port;
-    document.getElementById("https").checked = https;
+    disconnect();
+    localStorage.setItem("ip", this.ip.value);
+    localStorage.setItem("port", this.port.value);
+    if (this.https.checked) {
+        localStorage.setItem("type", "https");
+    } else {
+        localStorage.setItem("type", "http");
+    }
+    updateConnectionSettings();
+    connect();
 }
 
 
