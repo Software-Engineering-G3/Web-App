@@ -113,23 +113,38 @@ function registerSocketEvents() {
                 switchRelay.checked = device.state;
             }
             // SENSORS
+            // Ambient light
             if (device.component == "light") {
                 ambientLight.innerHTML = device.state;
             }
+            // Gas detector
             if (device.component == "gas") {
                 gasDetector.innerHTML = device.state;
             }
+            // Motion
             if (device.component == "mot") {
                 motion.innerHTML = device.state;
             }
+            // Soil humidity
             if (device.component == "soil") {
                 soilHumidity.innerHTML = device.state;
             }
+            // Steam
             if (device.component == "steam") {
                 steam.innerHTML = device.state;
             }
+            // MUSIC PLAYER
+            if (device.component == "player") {
+                loadSong(device.title, device.artist);
+                volumeChanged(device.volume);
+                if (device.state == "playing") {
+                    playing();
+                }
+                if (device.state == "paused") {
+                    paused();
+                }
+            }
             console.log(device);
-
         });
     });
 }

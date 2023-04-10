@@ -7,37 +7,28 @@ const audio = document.getElementById('audio');
 const title = document.getElementById('title');
 const cover = document.getElementById('cover');
 
-// Update song details
-function loadSong(song) {
+// Update UI
+function loadSong(title, artist) {
+  let song = title + " - " + artist;
   title.innerText = song;
-  audio.src = `music/${song}.mp3`;
-  cover.src = `images/${song}.jpg`;
+  // cover.src = `images/${song}.jpg`;
 }
 
-// Play song
-function playSong() {
-  socket.emit("+play music")
-  console.log("Play music")
+function playing() {
+  musicContainer.classList.add('play');
+  playBtn.querySelector('i.fas').classList.remove('fa-play');
+  playBtn.querySelector('i.fas').classList.add('fa-pause');
 }
 
-// Pause song
-function pauseSong() {
-  socket.emit("+pause music")
-  console.log("Pause music")
+function paused() {
+  musicContainer.classList.remove('play');
+  playBtn.querySelector('i.fas').classList.remove('fa-pause');
+  playBtn.querySelector('i.fas').classList.add('fa-play');
 }
 
-// Previous song
-function prevSong() {
-  socket.emit("+previous song")
-  console.log("Previous song")
+function volumeChanged(volume) {
+  
 }
-
-// Next song
-function nextSong() {
-  socket.emit("+next song");
-  console.log("Next song");
-}
-
 
 // EVENT LISTENERS
 
@@ -52,6 +43,30 @@ playBtn.addEventListener('click', () => {
   }
 });
 
+// Play song
+function playSong() {
+  socket.emit("+play music")
+  console.log("Play music")
+}
+
+// Pause song
+function pauseSong() {
+  socket.emit("+pause music")
+  console.log("Pause music")
+}
+
 // Change song
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
+
+// Previous song
+function prevSong() {
+  socket.emit("+previous song")
+  console.log("Previous song")
+}
+
+// Next song
+function nextSong() {
+  socket.emit("+next song");
+  console.log("Next song");
+}
