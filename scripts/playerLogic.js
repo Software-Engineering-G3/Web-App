@@ -5,7 +5,7 @@ const nextBtn = document.getElementById('next');
 
 const title = document.getElementById('title');
 const cover = document.getElementById('cover');
-const volume = document.getElementById('volume-range');
+const volumeSlider = document.getElementById('volume-range');
 
 // Update UI
 function loadSong(title, artist) {
@@ -27,7 +27,7 @@ function paused() {
 }
 
 function volumeChanged(volume) {
-  volume.value = volume;
+  volumeSlider.value = volume;
   console.log("Volume changed to: " + volume);
 }
 
