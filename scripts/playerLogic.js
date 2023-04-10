@@ -3,14 +3,13 @@ const playBtn = document.getElementById('play');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 
-const title = document.getElementById('title');
+const songName = document.getElementById('title');
 const cover = document.getElementById('cover');
 const volumeSlider = document.getElementById('volume-range');
 
 // Update UI
 function loadSong(title, artist) {
-  let song = title + " - " + artist;
-  title.innerText = song;
+  songName.innerText = title + " - " + artist;
   // cover.src = `images/${song}.jpg`;
 }
 
