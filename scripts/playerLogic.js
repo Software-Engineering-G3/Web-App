@@ -71,6 +71,6 @@ nextBtn.addEventListener('click', () => {
 // Volume
 volume.addEventListener('change', () => {
   let volume = volume.value;
-  socket.emit("+volume " + volume);
+  socket.emit("+volume ", volume);
   console.log("Requested volume change to: " + volume);
 });
