@@ -7,15 +7,6 @@ const audio = document.getElementById('audio');
 const title = document.getElementById('title');
 const cover = document.getElementById('cover');
 
-// Song titles
-const songs = ["Summer Montage  Madeline", "Isabelle Pierre. Le temps est bon", "Finale Babylon, Music by Justin Hurwitz"];
-
-// Keep track of song
-let songIndex = 2;
-
-// Initially load song details into DOM
-loadSong(songs[songIndex]);
-
 // Update song details
 function loadSong(song) {
   title.innerText = song;

@@ -134,16 +134,6 @@ function registerSocketEvents() {
     });
 }
 
-function play() {
-    socket.emit("play");
-    console.log("Play music");
-}
-
-function pause() {
-    socket.emit("pause");
-    console.log("Pause music");
-}
-
 
 // DIV game of shadows
 let btnActuators = document.getElementById('btnActuators');
