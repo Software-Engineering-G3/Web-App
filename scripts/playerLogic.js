@@ -69,7 +69,7 @@ nextBtn.addEventListener('click', () => {
 
 // Volume
 volumeSlider.addEventListener('change', () => {
-  let volume = volume.value;
-  socket.emit("+volume ", volume);
+  let volume = volumeSlider.value;
+  socket.emit("+volume", volume);
   console.log("Requested volume change to: " + volume);
 });

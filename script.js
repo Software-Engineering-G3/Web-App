@@ -83,6 +83,7 @@ function registerSocketEvents() {
 
     socket.on('disconnect', function () {
         //TODO
+        document.getElementById("connection-status").innerHTML = "Disconnected";
         console.log("Disconnected from server");
     });
 
@@ -149,10 +150,12 @@ function registerSocketEvents() {
             if (device.component == "player") {
                 loadSong(device.title, device.artist);
                 volumeChanged(device.volume);
-                if (device.state == "playing") {
+                if (device.state == "Playing") {
+                    console.log("Music is playing")
                     playing();
                 }
-                if (device.state == "paused") {
+                if (device.state == "Paused") {
+                    console.log("Music is paused")
                     paused();
                 }
             }
