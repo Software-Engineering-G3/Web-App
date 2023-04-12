@@ -36,6 +36,9 @@ let switchWindow = document.getElementById("window-checkbox");
 let switchOutdoorLight = document.getElementById("outdoor-light-checkbox");
 let sliderIndoorLight = document.getElementById("indoor-light-range");
 let switchDoor = document.getElementById("door-checkbox");
+let divFanSpeed=document.getElementById('fan-speedSection');
+divFanSpeed.style.display = 'none';
+
 
 // Sensors
 let gasDetector = document.getElementById("gas-detector-value");
@@ -43,6 +46,8 @@ let ambientLight = document.getElementById("ambient-light-value");
 let motion = document.getElementById("motion-value");
 let soilHumidity = document.getElementById("soil-humidity-value");
 let steam = document.getElementById("steam-value");
+
+
 
 window.onload = function () {
     connect();
@@ -107,10 +112,13 @@ function registerSocketEvents() {
             if (device.component == "fan") {
                 if (device.state != 0) {
                     switchFan.checked = true;
+                    divFanSpeed.style.display = 'block';
                     sliderFan.value = device.state;
+                    
                 }
                 if (device.state == 0) {
                     switchFan.checked = false;
+                    divFanSpeed.style.display = 'none';
                 }
             }
             // Indoor light
@@ -175,6 +183,7 @@ let divSensors = document.getElementById('sensors');
 let divMusic = document.getElementById('musicPlayer');
 let divSettings = document.getElementById('settings');
 
+
 btnSensors.addEventListener('click', () => {
     divSensors.style.display = 'block';
     divMusic.style.display = 'none';
@@ -232,7 +241,6 @@ let form = document.forms["update-connection-settings"];
 form.addEventListener("submit", getValues);
 
 
-
 function getValues(event) {
     event.preventDefault();
     disconnect();
@@ -246,5 +254,6 @@ function getValues(event) {
     updateConnectionSettings();
     connect();
 }
+
 
 
