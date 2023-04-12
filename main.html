@@ -253,41 +253,44 @@
 						<img src="images/music ring.webp" alt="music-cover" id="cover" />
 					</div>
 					<div class="navigation">
-						<button id="prev" class="action-btn">
-							<i class="fas fa-backward"></i>
-						</button>
-						<button id="play" class="action-btn action-btn-big">
-							<i class="fas fa-play"></i>
-						</button>
-						<button id="next" class="action-btn">
-							<i class="fas fa-forward"></i>
-						</button>
+							<button id="prev" class="action-btn">
+								<i class="fas fa-backward"></i>
+							</button>
+							<button id="play" class="action-btn action-btn-big">
+								<i class="fas fa-play"></i>
+							</button>
+							<button id="next" class="action-btn">
+								<i class="fas fa-forward"></i>
+							</button>
 					</div>
-					<i class="fas fa-volume-up"></i>
-					<div class="volume-container">
-						<label class="" id="fan-speed">
-							<input type="range" min="0" max="100" value="25" class="range" id="volume-range">
-						</label>
+					<div class="navigationSecond">
+							<label class="" id="music-volume">
+								<i class="fas fa-volume-up"></i>
+								<input type="range" min="0" max="100" value="25" class="range" id="volume-range">
+							</label>
 					</div>
+				</div>
 				</div>
 			</div>
 			<!-- Settings-->
-			<div class="objet" id="settings">
+			<div class="object" id="settings">
 				<div class="status" style="text-align: center; padding-top:100px;">
 					<div id="connection-configuration">
 						<h1>Settings</h1><br>
 						<h2>Change your Web configuration</h2><br>
-						<p><b>IP address: </b><span id="ip"></span></p><br>
+						<hr>
+						<br><p><b>IP address: </b><span id="ip"></span></p><br>
 						<p><b>Port number: </b><span id="port"></span></p><br>
 						<label for="https"><b>Https: </b></label><input type="checkbox" id="https" name="https" disabled="disabled">
 					</div>
+					<hr><br>
 					<form name="update-connection-settings">
 						<label for="update_ip"><b>IP address</b></label><br>
 						<input type="text" id="update_ip" name="ip"> <br>
 						<label for="update_port"><b>Port number</b></label><br>
 						<input type="number" id="update_port" name="port"><br>
 						<label for="update_https"><b>Https: </b></label><input type="checkbox" id="update_https" name="https"><br>
-						<input type="submit" value="Update" class="formInputButton">
+						<br><input type="submit" value="Update" id="formInputButton">
 					</form>
 				</div>
 			</div>

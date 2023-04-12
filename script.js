@@ -253,6 +253,7 @@ function getValues(event) {
     }
     updateConnectionSettings();
     connect();
+    alert("Your web configuration has been modified")
 }
 
 

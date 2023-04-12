@@ -23,8 +23,10 @@ function updateFan() {
         let speed = document.getElementById("fan-range").value;
         socket.emit("-fan_" + speed);
         console.log("Fan On, speed: " + speed);
+        document.getElementById('fan-speedSection').style.display = 'block';
     } else {
         socket.emit("-fan_0");
+        document.getElementById('fan-speedSection').style.display = 'none';
         console.log("Fan Off");
     }
 }
