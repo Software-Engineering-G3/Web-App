@@ -2,7 +2,7 @@
 let socket;
 let connected;
 
-// Conncetion parameters
+// Connection parameters
 let ip;
 let port;
 let https;
