@@ -335,18 +335,18 @@ main{
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 90%;
+  width: 70%;
   margin: 100px auto 0;
   padding: 20px 30px;
-  height: 50%;
+  height: 55%;
   border-radius: 15px;
   box-shadow: 0 20px 20px 0 rgba(252, 169, 169, 0.6);
 }
 
 .img-container {
   position: relative;
-  width: 240px;
-  height: 240px;
+  width: 260px;
+  height: 260px;
   margin-bottom: 30px;
 }
 
@@ -356,16 +356,16 @@ main{
   bottom: 100%;
   left: 50%;
   transform: translate(-50%, 50%);
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background-color: #fff;
 }
 
 .img-container img {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 1;
+  left: 1;
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -420,7 +420,7 @@ main{
 }
 
 .navigation {
-  top: 50%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
