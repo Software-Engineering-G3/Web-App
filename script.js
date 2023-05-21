@@ -53,11 +53,6 @@ window.onload = function () {
     connect();
 };
 
-function checkConnection() {
-    //TODO check credentials, if they match we load the main page 
-    window.location.replace("main.html");
-}
-
 function connect() {
     console.log("Connecting...");
     document.getElementById("connection-status").innerHTML = "Connecting...";
