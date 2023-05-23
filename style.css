@@ -403,7 +403,6 @@ main{
 }
 
 .music-container.play .music-info {
-  opacity: 0;
   transform: translateY(-100%);
 }
 
