@@ -57,7 +57,7 @@ function pauseSong() {
 
 // Previous song
 prevBtn.addEventListener('click', () => {
-  socket.emit("+previous song");
+  socket.emit("+prev song");
   console.log("Previous song");
 });
 
