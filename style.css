@@ -168,7 +168,8 @@ main{
 }
 
 .status{
-	margin-bottom:3rem;
+	margin-bottom:4rem;
+	text-align: center;
 }
 .status input{
 	background: linear-gradient(
